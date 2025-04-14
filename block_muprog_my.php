@@ -1,43 +1,48 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Programs for Moodle™.
 //
-// Moodle is free software: you can redistribute it and/or modify
+// This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Moodle is distributed in the hope that it will be useful,
+// This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+// phpcs:disable moodle.Files.BoilerplateComment.CommentEndedTooSoon
 
 /**
  * My programs overview block.
  *
- * @package    block_myprograms
- * @copyright  2022 Open LMS (https://www.openlms.net/)
- * @author     Petr Skoda
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     block_muprog_my
+ * @copyright   2022 Open LMS (https://www.openlms.net/)
+ * @copyright   2025 Petr Skoda
+ * @author      Petr Skoda
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-class block_myprograms extends block_base {
+class block_muprog_my extends block_base {
+    #[\Override]
     public function init() {
-        $this->title = get_string('pluginname', 'block_myprograms');
+        $this->title = get_string('pluginname', 'block_muprog_my');
     }
 
+    #[\Override]
     public function get_content() {
         if (isset($this->content)) {
             return $this->content;
         }
 
-        if (!enrol_is_enabled('programs') || !isloggedin() || isguestuser()) {
+        if (!enrol_is_enabled('muprog') || !isloggedin() || isguestuser()) {
             return null;
         }
 
-        /** @var \enrol_programs\output\my\renderer $myouput */
-        $myouput = $this->page->get_renderer('enrol_programs', 'my');
+        /** @var \tool_muprog\output\my\renderer $myouput */
+        $myouput = $this->page->get_renderer('tool_muprog', 'my');
 
         $this->content = new stdClass();
         $this->content->text = $myouput->render_block_content();
@@ -46,22 +51,13 @@ class block_myprograms extends block_base {
         return $this->content;
     }
 
-    /**
-     * Locations where block can be displayed.
-     *
-     * @return array
-     */
+    #[\Override]
     public function applicable_formats() {
         return ['all' => true];
     }
 
-    /**
-     * Allow the block to have a configuration page.
-     *
-     * @return boolean
-     */
+    #[\Override]
     public function has_config() {
         return false;
     }
 }
-

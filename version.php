@@ -1,38 +1,41 @@
 <?php
-// This file is part of Moodle - http://moodle.org/
+// This file is part of Programs for Moodle™.
 //
-// Moodle is free software: you can redistribute it and/or modify
+// This program is free software: you can redistribute it and/or modify
 // it under the terms of the GNU General Public License as published by
 // the Free Software Foundation, either version 3 of the License, or
 // (at your option) any later version.
 //
-// Moodle is distributed in the hope that it will be useful,
+// This program is distributed in the hope that it will be useful,
 // but WITHOUT ANY WARRANTY; without even the implied warranty of
 // MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 // GNU General Public License for more details.
 //
 // You should have received a copy of the GNU General Public License
-// along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
+// along with this program.  If not, see <https://www.gnu.org/licenses/>.
+
+// phpcs:disable moodle.Files.BoilerplateComment.CommentEndedTooSoon
 
 /**
  * My programs overview block.
  *
- * @package    block_myprograms
- * @copyright  2022 Open LMS (https://www.openlms.net/)
- * @author     Petr Skoda
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ * @package     block_muprog_my
+ * @copyright   2022 Open LMS (https://www.openlms.net/)
+ * @copyright   2025 Petr Skoda
+ * @author      Petr Skoda
+ * @license     https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
 defined('MOODLE_INTERNAL') || die();
 
 /** @var stdClass $plugin */
-
-$plugin->version   = 2024091900;
-$plugin->requires  = 2024091700.00; // 4.5.0
-$plugin->component = 'block_myprograms';
-$plugin->release   = 'v4.0.1';
+$plugin->component = 'block_muprog_my';
+$plugin->version   = 2025040900;
+$plugin->requires  = 2024091700.00;
+$plugin->maturity  = MATURITY_ALPHA;
 $plugin->supported = [405, 405];
+$plugin->release   = 'mu-4.5.3-04';
 
 $plugin->dependencies = [
-    'enrol_programs' => 2024091900,
+    'tool_muprog' => 2025040900,
 ];
