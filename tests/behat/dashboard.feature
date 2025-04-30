@@ -1,4 +1,4 @@
-@block @block_muprog_my @tool_muprog @muTMS
+@block @block_muprog_my @tool_muprog @MuTMS
 Feature: My programs block
 
   @javascript
